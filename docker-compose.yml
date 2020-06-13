@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        mysql_version: 5.6
+    container_name: docker-mysql
+    environment:
+      MYSQL_DATABASE: prueba
+      MYSQL_USER: prueba
+      MYSQL_PASSWORD: prueba
+      MYSQL_ROOT_PASSWORD: prueba
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/bd.sql:/docker-entrypoint-initdb.d/bd.sql
+
+  web:
+    build:
+      context: ./php
+      args:
+        php_version: 7.3-apache
+    ports:
+      - "90:80"
+    volumes:
+      - ./DockerWeb:/var/www/html
+    links:
+      - mysql
