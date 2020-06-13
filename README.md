@@ -6,7 +6,9 @@ Crea 2 contenedores, un apache-php y otro mysql. Ambos se relacionan para mostra
 
 # Arrancar contenedores
 Para iniciar los contenedores
+
 `docker-compose up -d`
 
 Una vez iniciado vamos al navegador con la siguiente url:
-`http://localhost`
+
+`http://localhost:90`
